@@ -1,0 +1,80 @@
+<div id="product" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+
+      <!-- APP TITLE -->
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/apps/usermanager'">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+
+        <div fxLayout="column" fxLayoutAlign="start start" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+          <div class="h2" *ngIf="pageType ==='edit'">
+           
+          </div>
+          <div class="h2" *ngIf="pageType ==='new'">
+           کاربر جدید
+          </div>
+          <div class="subtitle secondary-text">
+            <span>فرم ایجاد کاربر جدید</span>
+          </div>
+        </div>
+      </div>
+      <!-- / APP TITLE -->
+          <button mat-raised-button
+                class="save-product-button"
+                *ngIf="pageType ==='new'"
+                  (click)="saveUser()">
+                <mat-icon>people</mat-icon>
+            <span>ذخیره کاربر جدید</span>
+          </button>
+          <button mat-raised-button
+              class="save-product-button"
+              *ngIf="pageType ==='edit'" (click)="updateUser()">
+              <mat-icon>people</mat-icon>
+          <span>ذخیره تغییرات</span>
+      </button>
+    </div>
+    <!-- / HEADER -->
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+
+      <!-- CONTENT -->
+      <div class="content" dir="rtl">
+
+        <form #createUser="ngForm" name="userForm" class="product w-100-p" fxLayout="column" fxFlex>
+          <div class="tab-content p-24" fusePerfectScrollbar>
+
+            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+              <mat-label>نام کاربر</mat-label>
+              <input matInput placeholder="نام کاربر" [(ngModel)]="user.name" name="name"  required>
+            </mat-form-field>
+{{user.name}}
+            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+              <mat-label>نقش</mat-label>
+              <input matInput placeholder="نقش امنیتی" name="role" [(ngModel)]="user.role"  required>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+                <mat-label>نام کاربری</mat-label>
+                <input matInput placeholder="نام کاربری" name="username" [(ngModel)]="user.username"  required>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="pageType ==='new'" appearance="outline" floatLabel="always" class="w-100-p">
+                  <mat-label>کلمه عبور</mat-label>
+                  <input matInput type="password" placeholder="کلمه عبور" name="password" [(ngModel)]="user.password" required>
+                </mat-form-field>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

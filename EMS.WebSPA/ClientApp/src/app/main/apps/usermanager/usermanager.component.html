@@ -1,0 +1,139 @@
+<div id="users" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+      <!-- HEADER -->
+      <div class="header accent"
+           fxLayout="column" fxLayoutAlign="center center"
+           fxLayout.gt-sm="row" fxLayoutAlign.gt-sm="space-between center">
+
+          <!-- APP TITLE -->
+          <div class="logo mb-24 mb-md-0"
+               fxLayout="row" fxLayoutAlign="start center">
+              <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+                  people
+              </mat-icon>
+              <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+                  کاربران
+              </span>
+          </div>
+          <!-- / APP TITLE -->
+
+          <!-- SEARCH -->
+          <div class="search-wrapper mx-32 mx-md-0">
+              <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+                  <mat-icon>search</mat-icon>
+                  <input #filter placeholder="جستجوی کاربر">
+              </div>
+          </div>
+          <!-- / SEARCH -->
+
+          <!-- ADD BUTTON -->
+          <button mat-raised-button
+                  [routerLink]="'/apps/usermanager/new'"
+                  class="add-product-button fuse-white mt-24 mt-md-0">
+                  <mat-icon>person_add</mat-icon>
+              <span>کاربر جدید</span>
+          </button>
+          <!-- / ADD BUTTON -->
+
+      </div>
+      <!-- / HEADER -->
+
+      <!-- CONTENT CARD -->
+      <div class="content-card">
+        <mat-table class="products-table"
+                   #table [dataSource]="dataSource"
+                   [@animateStagger]="{value:'50'}"
+                   fusePerfectScrollbar>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>شماره</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    <p class="text-truncate">{{user.id}}</p>
+                </mat-cell>
+            </ng-container>
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header>نام</mat-header-cell>
+                <mat-cell *matCellDef="let user">
+                    <p class="text-truncate">{{user.name}}</p>
+                </mat-cell>
+            </ng-container>
+            <!-- Role Column -->
+            <ng-container matColumnDef="role">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>نقش</mat-header-cell>
+              <mat-cell *matCellDef="let user">
+                  <p class="text-truncate">{{user.name}}</p>
+              </mat-cell>
+          </ng-container>
+            <!-- UserName Column -->
+            <ng-container matColumnDef="username">
+              <mat-header-cell *matHeaderCellDef mat-sort-header>نام کاربری</mat-header-cell>
+              <mat-cell *matCellDef="let user">
+                  <p class="text-truncate">{{user.userName}}</p>
+              </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="lockoutEnabled">
+            <mat-header-cell *matHeaderCellDef mat-sort-header>غیر فعال</mat-header-cell>
+              <mat-cell *matCellDef="let user">
+                  <!-- <p class="text-truncate">{{user.lockoutEnabled}}</p> -->
+                  <mat-icon *ngIf="user.lockoutEnabled">lock</mat-icon>
+                  <mat-icon *ngIf="user.lockoutEnabled==false">lock_open</mat-icon>
+              </mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="buttons">
+              <mat-header-cell *matHeaderCellDef></mat-header-cell>
+              <mat-cell *matCellDef="let user">
+                  <div fxFlex="row" fxLayoutAlign="start center">
+                      <!-- <button mat-icon-button (click)="editUser(user.id)" aria-label="Toggle star">
+                          <mat-icon class="amber-fg">edit</mat-icon>
+                          ویرایش
+                      </button> -->
+                      <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More" >
+                        <mat-icon>more_vert</mat-icon>
+                    </button>
+        
+                    <mat-menu #moreMenu="matMenu">
+                        <button mat-menu-item aria-label="Reply" (click)="editUser(user.id)">
+                            <mat-icon>edit</mat-icon>
+                            <span>ویرایش</span>
+                        </button>
+        
+                        <button mat-menu-item aria-label="Forward" (click)="resetPassword(user.id)">
+                            <mat-icon>vpn_key</mat-icon>
+                            <span>بازنشانی کلمه عبور</span>
+                        </button>
+        
+                        <button mat-menu-item aria-label="Print" (click)="lockOutUser(user)">
+                            <mat-icon>lock_open</mat-icon>
+                            <span>فعال/ غیر فعال</span>
+                        </button>
+                    </mat-menu>
+                  </div>
+              </mat-cell>
+          </ng-container>
+            <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+            <mat-row *matRowDef="let user; columns: displayedColumns;"
+                     class="product"
+                     matRipple>
+                     
+            </mat-row>
+
+        </mat-table>
+
+    </div>
+  
+      <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

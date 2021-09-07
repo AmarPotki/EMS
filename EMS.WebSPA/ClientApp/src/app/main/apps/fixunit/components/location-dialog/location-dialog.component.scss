@@ -1,0 +1,13 @@
+.location--dialog {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  p {
+    color: #f44336;
+    text-align: right;
+  }
+  button {
+    margin-top: 1rem;
+  }
+}

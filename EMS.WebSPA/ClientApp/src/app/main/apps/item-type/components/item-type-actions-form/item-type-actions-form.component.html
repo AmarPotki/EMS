@@ -1,0 +1,26 @@
+<form *ngIf="showActionsForm" #frmLocation="ngForm" fxLayout="column" novalidate>
+  <mat-card>
+
+    <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+      <mat-label> نوع جدید</mat-label>
+      <input matInput [(ngModel)]="nodeName" name="nodeName" required placeholder="وارد کردن نام  نوع الزامی است" />
+    </mat-form-field>
+
+    <div fxLayout="row">
+      
+      <button mat-button color="primary" (click)="save()" class="add-product-button fuse-white mt-24 mt-md-0"
+        [disabled]="!frmLocation.valid">
+        <mat-icon>save</mat-icon>
+        <span>ذخیره سازی</span>
+      </button>
+
+      <button mat-button color="primary" (click)="closeForm()"
+        class="add-product-button fuse-white mt-24 mt-md-0">
+        <mat-icon>cancel</mat-icon>
+        <span>انصراف</span>
+      </button>
+
+    </div>
+
+  </mat-card>
+</form>

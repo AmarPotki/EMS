@@ -1,0 +1,13 @@
+
+    <h2 mat-dialog-title>قطعه جدید</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" floatLabel="always" class="w-100-p">
+        <mat-label>قطعه</mat-label>
+        <input matInput placeholder="قطعه" name="part" [(ngModel)]="data.partname" required>
+    </mat-form-field>  
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close>انصراف</button>
+    <!-- The mat-dialog-close directive optionally accepts a value as a result for the dialog. -->
+    <button mat-button [mat-dialog-close]="data.partname">ذخیره</button>
+</mat-dialog-actions>

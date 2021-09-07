@@ -1,0 +1,51 @@
+﻿@using EMS.WebSPA.Controllers.Account
+@model EMS.WebSPA.Controllers.Account.LoginViewModel
+<div class="row login">
+    <div class="card col-4 login-content">
+       
+        <form method="post" asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]">
+
+            <input type="hidden" asp-for="ReturnUrl" />
+            <h4 class="text-center">Login</h4>
+            @await Html.PartialAsync("_ValidationSummary")
+            @if (Model.EnableLocalLogin){
+                <div class="md-form">
+                    <input type="text" asp-for="Username" class="form-control">
+                    <label asp-for="Username">Email</label>
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+                <div class="md-form">
+                    <input type="password" asp-for="Password" class="form-control"/>
+                    <label asp-for="Password">Password</label>
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                if (Model.AllowRememberLogin){
+                    <div class="form-group login-remember">
+                        <label asp-for="RememberLogin">
+                            <input asp-for="RememberLogin">
+                            <span>Remember My Login</span>
+                        </label>
+                    </div>
+                }
+                <div class="form-group d-flex justify-content-center">
+                    <button type="submit" class="btn btn-primary" name="login">SIGN IN</button>
+                </div>
+            }
+        </form>
+
+        <footer class="form-group footer">
+            <p>
+                Dont have an account? <a asp-controller="Account" asp-action="Register">sign up now!</a>
+            </p>
+            <p>
+                Forgot password? <a asp-page="/" asp-route-returnUrl="/@Model.ReturnUrl">click here!</a>
+           
+            </p>
+            <p>user:demouser@microsoft.com</p>
+            <p>password:Pass@word1</p>
+        </footer>
+    </div>
+</div>
+
+

@@ -1,0 +1,10 @@
+<div *ngIf="fixfaults.data.length === 0" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <span class="no-messages-text hint-text">موردی برای نمایش وجود ندارد</span>
+</div>
+
+<div class="mail-list" [@animateStagger]="{value:'50'}">
+  <app-fixfault-list-item matRipple *ngFor="let fixfault of fixfaults.data" [fixfault]="fixfault" (click)="readFixfault(fixfault)"
+                  
+                  [@animate]="{value:'*',params:{y:'100%'}}">
+</app-fixfault-list-item>
+</div>

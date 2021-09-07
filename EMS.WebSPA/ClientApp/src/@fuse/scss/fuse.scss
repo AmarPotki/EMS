@@ -1,0 +1,8 @@
+// Material theming tools
+@import '~@angular/material/theming';
+
+$sahel: mat-typography-config($font-family: 'sahel'); 
+ @include angular-material-typography($sahel); 
+
+// Breakpoint mixins
+@import "partials/breakpoints";

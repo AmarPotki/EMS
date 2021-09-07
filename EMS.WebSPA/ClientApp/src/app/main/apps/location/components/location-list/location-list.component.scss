@@ -1,0 +1,23 @@
+ 
+
+.tree-container {
+    display: flex;
+    flex-direction: row;
+    direction: rtl;
+    // align-items: center;
+    padding: 2rem;
+  }
+  
+.action-box {
+    margin-right: 2rem;
+    button {
+      display: block;
+      margin-bottom: 1rem;
+    }
+  }
+  form {
+    margin: 2rem 3rem;
+    .mat-form-field {
+      direction: ltr !important;
+    }
+  }

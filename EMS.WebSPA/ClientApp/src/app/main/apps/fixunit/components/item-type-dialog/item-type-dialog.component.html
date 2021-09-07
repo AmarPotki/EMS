@@ -1,0 +1,9 @@
+<div class="item-type--dialog">
+    <!-- <app-item-type-list></app-item-type-list> -->
+    <button (click)="onClose()" mat-button color="primary">
+        تایید
+    </button>
+    <p color="warn" *ngIf="showError">
+        انتخاب نمودن نوع آیتم الزامی است
+    </p>
+</div>

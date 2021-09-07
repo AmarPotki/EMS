@@ -1,0 +1,49 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model EMS.WebSPA.ViewModels.RegisterVM
+<div class="row register">
+    <div class="col-md-4 card register-content">
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <h4 class="text-center">REGISTER MEMBER</h4>
+            <div class="md-form">
+                <input type="text" asp-for="FirstName" class="form-control">
+                <label asp-for="FirstName">First Name</label>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="md-form">
+                <input type="text" asp-for="LastName" class="form-control">
+                <label asp-for="LastName">Last Name</label>
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="md-form">
+                <input type="text" asp-for="Email" class="form-control">
+                <label asp-for="Email">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="md-form">
+                <input type="text" asp-for="Password" class="form-control" />
+                <label asp-for="Password">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+           
+            <div class="md-form">
+                <input type="text" asp-for="ConfirmPassword" class="form-control" />
+                <label asp-for="ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">SIGN UP</button>
+            </div>
+        </form>
+        <footer class="form-group footer">
+            <p>
+                Already have an account? <a asp-controller="Account" asp-action="Login" >click here</a>
+            </p>
+        </footer>
+    </div>
+</div>
+
+ 

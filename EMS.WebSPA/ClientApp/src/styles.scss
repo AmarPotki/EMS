@@ -1,0 +1,20 @@
+// Import Fuse core library
+@import "@fuse/scss/core";
+
+// Import app.theme.scss
+@import "app/app.theme";
+
+
+@font-face {
+    font-family: Sahel;
+    src: url("./@fuse/fonts/Sahel-FD-WOL.woff") format("woff"),
+      url("./@fuse/fonts/Sahel-FD-WOL.eot?#iefix") format("embedded-opentype"),
+      url("/@fuse/fonts/Sahel-FD-WOL.ttf") format("truetype");
+    font-weight: normal;
+  }
+
+  .mat-snack-bar-container{
+    direction: rtl;
+  }
+
+  @import "~@ng-select/ng-select/themes/material.theme.css";

@@ -1,0 +1,50 @@
+<div id="product" class="page-layout carded fullwidth inner-scroll">
+  <div class="top-bg accent"></div>
+  <div class="center">
+    <div class="header accent" fxLayout="row" fxLayoutAlign="space-between center">
+      <div fxLayout="row" fxLayoutAlign="start center">
+        <button mat-icon-button class="mr-0 mr-sm-16" [routerLink]="'/apps/fixunit'">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div fxLayout="column" fxLayoutAlign="start start">
+          <div class="h2">
+            مدیریت اعضا
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-card">
+      <div class="content" dir="rtl">
+        <div fxLayout="column">
+
+          <mat-card>
+            <h3>افزودن عضو جدید</h3>
+            <form  style="width:25%" [formGroup]="addMemberForm">
+              <ng-select [items]="users" bindLabel="name" bindValue="id" [multiple]="false"
+                formControlName="selectedMember" [addTag]="false" [closeOnSelect]="true" [hideSelected]="true"
+                (search)="onSearchOwner($event)" placeholder="مسئول" dir="rtl" required>
+              </ng-select>
+              <button mat-raised-button class="save-product-button" [disabled]="!addMemberForm.valid"
+                (click)="addMember()">
+                <mat-icon>person_add </mat-icon>
+                افزودن
+              </button>
+            </form>
+          </mat-card>
+
+          <mat-card>
+            <h3>لیست اعضای واحد</h3>
+            <mat-chip-list>
+              <mat-chip class="pointer" *ngFor="let member of members" [selectable]="true" [removable]="true"
+                (removed)="removeMember(member)">
+                {{member.name}}
+                <mat-icon matChipRemove>cancel</mat-icon>
+              </mat-chip>
+            </mat-chip-list>
+          </mat-card>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

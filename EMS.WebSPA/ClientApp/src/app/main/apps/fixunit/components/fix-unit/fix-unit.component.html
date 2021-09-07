@@ -1,0 +1,128 @@
+<div id="users" class="page-layout carded fullwidth inner-scroll">
+
+  <!-- TOP BACKGROUND -->
+  <div class="top-bg accent"></div>
+  <!-- / TOP BACKGROUND -->
+
+  <!-- CENTER -->
+  <div class="center">
+
+    <!-- HEADER -->
+    <div class="header accent" fxLayout="column" fxLayoutAlign="center center" fxLayout.gt-sm="row"
+      fxLayoutAlign.gt-sm="space-between center">
+
+      <!-- APP TITLE -->
+      <div class="logo mb-24 mb-md-0" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="logo-icon s-32 mr-16" [@animate]="{value:'*',params:{delay:'50ms',scale:'0.2'}}">
+          build
+        </mat-icon>
+        <span class="logo-text h1" [@animate]="{value:'*',params:{delay:'100ms',x:'-25px'}}">
+          واحد تعمیرات
+        </span>
+      </div>
+      <!-- / APP TITLE -->
+
+      <!-- SEARCH -->
+      <div class="search-wrapper mx-32 mx-md-0">
+        <div class="search" fxFlex fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon>search</mat-icon>
+          <input #filter placeholder="جستجوی مکان">
+        </div>
+      </div>
+      <!-- / SEARCH -->
+
+      <!-- ADD BUTTON -->
+      <button mat-raised-button [routerLink]="'/apps/fixunit/add/0'"
+        class="add-product-button fuse-white mt-24 mt-md-0">
+        <mat-icon>build</mat-icon>
+        <span>واحد تعمیرات جدید</span>
+      </button>
+      <!-- / ADD BUTTON -->
+
+    </div>
+    <!-- / HEADER -->
+
+    <!-- CONTENT CARD -->
+    <div class="content-card">
+      <mat-table class="products-table" #table [dataSource]="dataSource" [@animateStagger]="{value:'50'}"
+        fusePerfectScrollbar>
+        <ng-container matColumnDef="id">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>ردیف</mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <p class="text-truncate">{{fixunit.id}}</p>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="title">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>عنوان</mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <p class="text-truncate">{{fixunit.title}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- itemTypId Column -->
+        <ng-container matColumnDef="itemType">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>نوع</mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <p class="text-truncate">{{fixunit.itemType}}</p>
+          </mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="location">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>مکان</mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <p class="text-truncate">{{fixunit.location}}</p>
+          </mat-cell>
+        </ng-container>
+        <!-- Owner Column -->
+        <!-- <ng-container matColumnDef="owner">
+          <mat-header-cell *matHeaderCellDef mat-sort-header>مسئول</mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <p class="text-truncate">{{fixunit.owner}}</p>
+          </mat-cell>
+        </ng-container> -->
+
+        <ng-container matColumnDef="buttons">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let fixunit">
+            <div fxFlex="row" fxLayoutAlign="start center">
+              <!-- <button mat-icon-button (click)="editPart(part.id)" aria-label="Toggle star">
+                          <mat-icon class="amber-fg">edit</mat-icon>
+                          ویرایش
+                      </button> -->
+              <button mat-icon-button [matMenuTriggerFor]="moreMenu" aria-label="More">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+
+              <mat-menu #moreMenu="matMenu">
+                <button mat-menu-item aria-label="Reply" (click)="editFixUnit(fixunit)">
+                  <mat-icon>edit</mat-icon>
+                  <span>ویرایش</span>
+                </button>
+
+                <button mat-menu-item aria-label="Reply" (click)="memberManagement(fixunit)">
+                  <mat-icon>person_outline </mat-icon>
+                  <span>مدیریت اعضا</span>
+                </button>
+
+                <button mat-menu-item aria-label="Print" (click)="deleteFixUnit(fixunit)">
+                  <mat-icon>lock_open</mat-icon>
+                  <span>حذف</span>
+                </button>
+              </mat-menu>
+            </div>
+          </mat-cell>
+        </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns; sticky:true"></mat-header-row>
+
+        <mat-row *matRowDef="let fixunit; columns: displayedColumns;" class="product" matRipple>
+
+        </mat-row>
+
+      </mat-table>
+
+    </div>
+
+    <!-- / CONTENT CARD -->
+
+    <!-- / CONTENT CARD -->
+  </div>
+  <!-- / CENTER -->
+</div>

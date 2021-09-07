@@ -1,0 +1,28 @@
+<div class="">
+  <section class=""
+           *ngIf="!authenticated">
+      <div class=""
+           (click)="login()">
+
+          <div class="">ورود</div>
+      </div>
+  </section>
+
+  <section class=""
+       *ngIf="authenticated">
+
+      <div class="">{{userName}}</div>
+      <img class="" src="">
+  </section>
+
+  <section class=""
+           *ngIf="authenticated">
+
+      <div class=""
+           (click)="logoutClicked($event)">
+
+          <div class="">خروج</div>
+          <img class="" src="">
+      </div>
+  </section>
+</div>
